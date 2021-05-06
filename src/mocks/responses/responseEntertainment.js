@@ -24,7 +24,7 @@ const responseMenus = {
       id: 4,
       title: "Bioskop",
       icon: Bioskop,
-    }
+    },
   ],
   message: "Selamat menu berhasil.",
   status: "Success",

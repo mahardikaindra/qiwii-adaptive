@@ -2,10 +2,7 @@ import { ENVIRONMENT, MENU, MENUS } from "../constants";
 
 const config = {
   development: {
-    Qiwii: [
-      MENU,
-      MENUS,
-    ],
+    Qiwii: [MENU, MENUS],
   },
 };
 

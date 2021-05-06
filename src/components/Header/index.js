@@ -1,16 +1,16 @@
 /*
-* Header Component
-*/
+ * Header Component
+ */
 
-import React from 'react';
-import './styles.css';
-import PropTypes from 'prop-types';
+import React from "react";
+import "./styles.css";
+import PropTypes from "prop-types";
 import Logo from "../../assets/images/header-logo.png";
-import { ArrowLeft, Bell } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { ArrowLeft, Bell } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 function Header({ back }) {
-  return(
+  return (
     <header className="navbar navbar-expand-md navbar-dark bg-primary">
       <nav className="container">
         <Link>
@@ -29,10 +29,10 @@ function Header({ back }) {
 
 Header.propTypes = {
   back: PropTypes.bool,
-}
+};
 
 Header.defaultProps = {
   back: false,
-}
+};
 
 export default Header;

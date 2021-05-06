@@ -36,7 +36,7 @@ const responseMenus = {
       id: 6,
       title: "Hiburan",
       icon: Bioskop,
-    }
+    },
   ],
   message: "Selamat menu berhasil.",
   status: "Success",

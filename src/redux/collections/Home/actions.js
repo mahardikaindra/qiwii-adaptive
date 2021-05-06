@@ -27,15 +27,15 @@ export function loginQiwii(email, password) {
             dispatch(setDataSession(data));
             resolve(data);
           } else {
-            reject(data.message)
+            reject(data.message);
           }
         })
         .catch((error) => {
-          if (error.response){
+          if (error.response) {
             reject(error.response);
-          } else if(error.request){
+          } else if (error.request) {
             reject(error.request);
-          } else if(error.message){
+          } else if (error.message) {
             reject(error.message);
           }
         });
@@ -52,14 +52,14 @@ export function fetchMenuCategory() {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
       Qiwii.get(MENU)
-      .then(({data}) => {
-        if (data.status === 'Success') {
-          dispatch(setDataMenu(data.data))
-        }
-      })
-      .catch((error) => console.log(error))
+        .then(({ data }) => {
+          if (data.status === "Success") {
+            dispatch(setDataMenu(data.data));
+          }
+        })
+        .catch((error) => console.log(error));
     });
-  }
+  };
 }
 
 const setDataEntertainment = (data) => ({
@@ -71,13 +71,13 @@ export function fetchEntertainmentCategory() {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
       Qiwii.get(MENUS)
-      .then(({data}) => {
-        console.log(data);
-        if (data.status === 'Success') {
-          dispatch(setDataEntertainment(data.data))
-        }
-      })
-      .catch((error) => console.log(error))
+        .then(({ data }) => {
+          console.log(data);
+          if (data.status === "Success") {
+            dispatch(setDataEntertainment(data.data));
+          }
+        })
+        .catch((error) => console.log(error));
     });
-  }
+  };
 }

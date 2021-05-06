@@ -31,20 +31,20 @@ export const mockQiwii = (instance: any) => {
     instance.onGet(MENU).reply(() => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve([200, responseMenus])
-        })
-      })
-    })
+          resolve([200, responseMenus]);
+        });
+      });
+    });
   }
 
   if (isMockAllowed("Qiwii", MENUS)) {
     instance.onGet(MENUS).reply(() => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve([200, responseEntertainment])
-        })
-      })
-    })
+          resolve([200, responseEntertainment]);
+        });
+      });
+    });
   }
 
   instance.onAny().passThrough();
