@@ -9,19 +9,18 @@ import Logo from "../../assets/images/header-logo.png";
 import { ArrowLeft, Bell } from "react-bootstrap-icons";
 
 function Header({ back }) {
-
   const renderBack = () => {
     return (
       <div>
         <ArrowLeft color="white" size={24} />
       </div>
     );
-  }
+  };
 
   return (
     <header className="navbar navbar-expand-md navbar-dark bg-primary">
       <nav className="container">
-        {back ? renderBack() : <div className="px-2"/>}
+        {back ? renderBack() : <div className="px-2" />}
         <div className="navbar-brand">
           <img src={Logo} alt="" width="100" height="45" />
         </div>
