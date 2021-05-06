@@ -22,7 +22,7 @@ function Header({ back }) {
       <nav className="container">
         {back ? renderBack() : <div className="px-2" />}
         <div className="navbar-brand">
-          <img src={Logo} alt="" width="100" height="45" />
+          <img src={Logo} alt="" width="90" height="45" className="img-fluid" />
         </div>
         <div>
           <Bell color="white" size={20} />
