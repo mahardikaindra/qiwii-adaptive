@@ -1,24 +1,30 @@
-import logo from '../assets/svgs/logo.svg';
-import './App.css';
+import { Provider } from "react-redux";
+import thunkMiddleware from "redux-thunk";
+import { createLogger } from "redux-logger";
+import { applyMiddleware, createStore, compose } from "redux";
+import { CookiesProvider } from "react-cookie";
+import reducer from "../redux/reducers";
+import Routes from "../routes";
+
+const logger = createLogger({
+  predicate: (getState, action) =>
+    process.env.REACT_APP_ENVIRONMENT === "development",
+});
+
+const configureStore = (initialState) => {
+  const enhancer = compose(applyMiddleware(thunkMiddleware, logger));
+  return createStore(reducer, initialState, enhancer);
+};
+
+const store = configureStore({});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <CookiesProvider>
+        <Routes />
+      </CookiesProvider>
+    </Provider>
   );
 }
 
