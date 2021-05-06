@@ -7,21 +7,27 @@ import "./styles.css";
 import PropTypes from "prop-types";
 import Logo from "../../assets/images/header-logo.png";
 import { ArrowLeft, Bell } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
 
 function Header({ back }) {
+
+  const renderBack = () => {
+    return (
+      <div>
+        <ArrowLeft color="white" size={24} />
+      </div>
+    );
+  }
+
   return (
     <header className="navbar navbar-expand-md navbar-dark bg-primary">
       <nav className="container">
-        <Link>
-          <ArrowLeft color="white" size={28} />
-        </Link>
+        {back ? renderBack() : <div className="px-2"/>}
         <div className="navbar-brand">
           <img src={Logo} alt="" width="100" height="45" />
         </div>
-        <Link>
+        <div>
           <Bell color="white" size={20} />
-        </Link>
+        </div>
       </nav>
     </header>
   );
