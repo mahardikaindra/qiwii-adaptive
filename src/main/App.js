@@ -5,6 +5,7 @@ import { applyMiddleware, createStore, compose } from "redux";
 import { CookiesProvider } from "react-cookie";
 import reducer from "../redux/reducers";
 import Routes from "../routes";
+import "./styles.css";
 
 const logger = createLogger({
   predicate: (getState, action) =>

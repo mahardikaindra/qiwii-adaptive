@@ -10,31 +10,37 @@ const responseMenus = {
     {
       id: 1,
       title: "Kesehatan",
+      navigate: "kesehatan",
       icon: Kesehatan,
     },
     {
       id: 2,
       title: "Pemerintah",
+      navigate: "pemerintahan",
       icon: Pemerintahan,
     },
     {
       id: 3,
       title: "Keuangan",
+      navigate: "keuangan",
       icon: Finance,
     },
     {
       id: 4,
       title: "Kecantikan",
+      navigate: "kecantikan",
       icon: Salon,
     },
     {
       id: 5,
-      title: "Service",
+      title: "Bengkel",
+      navigate: "services",
       icon: Bengkel,
     },
     {
       id: 6,
       title: "Hiburan",
+      navigate: "entertainment",
       icon: Bioskop,
     },
   ],
