@@ -101,11 +101,11 @@ const HealthCare = (props) => {
 };
 
 HealthCare.defaultProps = {
-  fetchHealthCare: () => {},
+  fetchOrganizations: () => {},
 };
 
 HealthCare.propTypes = {
-  fetchHealthCare: PropTypes.func,
+  fetchOrganizations: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

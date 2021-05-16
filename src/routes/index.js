@@ -6,15 +6,17 @@ import HealthCare from "../screens/HealthCare";
 import Government from "../screens/Government";
 import Finance from "../screens/Finance";
 import Salon from "../screens/Salon";
+import Services from "../screens/Services";
 
 function Routes() {
   return (
     <Router>
       <Switch>
         <Route exact path={"/kesehatan"} component={HealthCare} />
-        <Route exact path={"/pemerintahan"} component={Government} />
-        <Route exact path={"/keuangan"} component={Finance} />
-        <Route exact path={"/kecantikan"} component={Salon} />
+        <Route path={"/pemerintahan"} component={Government} />
+        <Route path={"/keuangan"} component={Finance} />
+        <Route path={"/kecantikan"} component={Salon} />
+        <Route path={"/services"} component={Services} />
         <Route path={"/adaptive"} component={Home} />
         <Route path={"/"} component={Home} />
       </Switch>

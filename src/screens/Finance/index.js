@@ -101,11 +101,11 @@ const Finance = (props) => {
 };
 
 Finance.defaultProps = {
-  fetchFinance: () => {},
+  fetchOrganizations: () => {},
 };
 
 Finance.propTypes = {
-  fetchFinance: PropTypes.func,
+  fetchOrganizations: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

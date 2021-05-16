@@ -99,11 +99,11 @@ const Salon = (props) => {
 };
 
 Salon.defaultProps = {
-  fetchSalon: () => {},
+  fetchOrganizations: () => {},
 };
 
 Salon.propTypes = {
-  fetchSalon: PropTypes.func,
+  fetchOrganizations: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

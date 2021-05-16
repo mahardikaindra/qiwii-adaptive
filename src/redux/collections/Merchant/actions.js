@@ -43,6 +43,16 @@ const setDataMoreSalon = (data) => ({
   payload: data,
 });
 
+const setDataServices = (data) => ({
+  type: types.SET_DATA_SERVICES,
+  payload: data,
+});
+
+const setDataMoreServices = (data) => ({
+  type: types.SET_DATA_MORE_SERVICES,
+  payload: data,
+});
+
 export function fetchOrganizations(payload, organization) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -63,6 +73,9 @@ export function fetchOrganizations(payload, organization) {
                 case "salon":
                   dispatch(setDataSalon(response.data));
                   break;
+                case "services":
+                  dispatch(setDataServices(response.data));
+                  break;
                 default:
                   dispatch(setDataHealthCare(response.data));
               }
@@ -81,6 +94,9 @@ export function fetchOrganizations(payload, organization) {
                 case "salon":
                   dispatch(setDataMoreSalon(response.data));
                   break;
+                case "services":
+                  dispatch(setDataMoreServices(response.data));
+                  break;
                 default:
                   dispatch(setDataMoreHealthCare(response.data));
               }
@@ -95,18 +111,12 @@ export function fetchOrganizations(payload, organization) {
   };
 }
 
-const setDataServices = (data) => ({
-  type: types.SET_DATA_SERVICES,
-  payload: data,
-});
-
 export function fetchServices(payload) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
       Qiwii.get(ORGANIZATION + qs.stringify(payload))
         .then((response) => {
           if (response.status === 200) {
-            dispatch(setDataServices(response.data));
             resolve(response.data);
           }
         })
