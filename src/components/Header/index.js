@@ -27,7 +27,17 @@ function Header({ back, title }) {
       <nav className="container">
         {back ? renderBack() : <div className="px-2" />}
         <div className="navbar-brand">
-          {title ? <h4 className="title">{title}</h4> : <img src={Logo} alt="" width="90" height="45" className="img-fluid" />}
+          {title ? (
+            <h4 className="title">{title}</h4>
+          ) : (
+            <img
+              src={Logo}
+              alt=""
+              width="90"
+              height="45"
+              className="img-fluid"
+            />
+          )}
         </div>
         <div>
           <Bell color="white" size={20} />

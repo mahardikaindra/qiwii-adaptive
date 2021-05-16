@@ -2,7 +2,7 @@
  * ItemMerchant Component
  */
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
@@ -11,7 +11,7 @@ import Logo from "../../assets/images/logo.png";
 function ItemMerchant({ data, index, category }) {
   const [icon, setIcon] = useState(
     data.id_icon ===
-    "https://app.qiwii.id/system/cms/themes/ace/img/logo_alt.png"
+      "https://app.qiwii.id/system/cms/themes/ace/img/logo_alt.png"
       ? Logo
       : data.id_icon
   );
