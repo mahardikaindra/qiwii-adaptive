@@ -8,21 +8,25 @@ const responseMenus = {
     {
       id: 1,
       title: "Event",
+      navigate: "event",
       icon: Event,
     },
     {
       id: 2,
       title: "PhotoStudio",
+      navigate: "photoStudio",
       icon: PhotoStudio,
     },
     {
       id: 3,
       title: "TempatWisata",
+      navigate: "tempatWisata",
       icon: TempatWisata,
     },
     {
       id: 4,
       title: "Bioskop",
+      navigate: "bioskop",
       icon: Bioskop,
     },
   ],
