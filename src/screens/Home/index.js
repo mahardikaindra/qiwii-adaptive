@@ -24,11 +24,11 @@ const Home = (props) => {
       <Header />
       <Hero url={url} alt="Qiwii" />
       {/* Start Of Menu */}
-      <div className="d-flex container col-12 col-sm-10 col-md-8 col-lg-8 col-xl-4 flex-wrap justify-content-center py-5">
+      <div className="d-flex container col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 flex-wrap justify-content-center py-5">
         {props.dataMenu.data &&
           props.dataMenu.data.map((item, index) => (
             <Link key={index} to={item.navigate.toLowerCase()}>
-              <div className="card-menu p-4 p-md-5 m-2 align-self-center shadow-sm">
+              <div className="card-menu p-3 p-md-4 m-2 align-self-center shadow-sm">
                 <div className="justify-content-center align-items-center">
                   <img
                     src={item.icon}

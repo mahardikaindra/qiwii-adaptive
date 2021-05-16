@@ -2,12 +2,15 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "../screens/Home";
+import HealthCare from "../screens/HealthCare";
 
 function Routes() {
   return (
     <Router>
       <Switch>
-        <Route exact path={"/adaptive"} component={Home} />
+        <Route exact path={"/kesehatan"} component={HealthCare} />
+        <Route path={"/adaptive"} component={Home} />
+        <Route path={"/"} component={Home} />
       </Switch>
     </Router>
   );

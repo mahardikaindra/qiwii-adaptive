@@ -7,13 +7,19 @@ import "./styles.css";
 import PropTypes from "prop-types";
 import Logo from "../../assets/images/header-logo.png";
 import { ArrowLeft, Bell } from "react-bootstrap-icons";
+import { useHistory } from "react-router-dom";
 
 function Header({ back }) {
+  let history = useHistory();
+
   const renderBack = () => {
     return (
-      <div>
+      <button
+        className="btn btn-primary-outline"
+        onClick={() => history.goBack()}
+      >
         <ArrowLeft color="white" size={24} />
-      </div>
+      </button>
     );
   };
 
