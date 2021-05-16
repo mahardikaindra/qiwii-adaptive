@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "../screens/Home";
 import HealthCare from "../screens/HealthCare";
+import Government from "../screens/Government";
 
 function Routes() {
   return (
     <Router>
       <Switch>
         <Route exact path={"/kesehatan"} component={HealthCare} />
+        <Route exact path={"/pemerintahan"} component={Government} />
         <Route path={"/adaptive"} component={Home} />
         <Route path={"/"} component={Home} />
       </Switch>

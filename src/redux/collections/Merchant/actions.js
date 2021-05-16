@@ -40,14 +40,24 @@ const setDataOrganization = (data) => ({
   payload: data,
 });
 
+const setDataMoreOrganization = (data) => ({
+  type: types.SET_DATA_MORE_ORGANIZATION,
+  payload: data,
+});
+
 export function fetchOrganization(payload) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
       Qiwii.get(ORGANIZATION + qs.stringify(payload))
         .then((response) => {
           if (response.status === 200) {
-            dispatch(setDataOrganization(response.data));
-            resolve(response.data);
+            if (Number(response.data.current_page) === 1) {
+              dispatch(setDataOrganization(response.data));
+              resolve(response.data);
+            } else {
+              dispatch(setDataMoreOrganization(response.data));
+              resolve(response.data);
+            }
           }
         })
         .catch((error) => {

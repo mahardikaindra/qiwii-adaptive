@@ -9,25 +9,25 @@ import "./styles.css";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const HealthCare = (props) => {
+const Government = (props) => {
   const [keyword, setKeyword] = useState("");
   const url = "https://app.qiwii.id/files/thumb/179d7a995690b4c/720/360/fit";
 
   useEffect(() => {
-    fetchHealthCare();
+    fetchOrganization();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (keyword.length >= 3) {
-      fetchHealthCare(keyword);
+      fetchOrganization(keyword);
     } else {
-      fetchHealthCare("");
+      fetchOrganization("");
     }
   }, [keyword]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  function fetchHealthCare(name) {
+  function fetchOrganization(name) {
     const payload = {
-      "f-id_organization_category": 1,
+      "f-id_organization_type": 4,
       "f-show_on_web": 1,
       pagging: 1,
       page: 1,
@@ -35,20 +35,20 @@ const HealthCare = (props) => {
     if (keyword !== "") {
       payload["f-name"] = name;
     }
-    props.fetchHealthCare(payload);
+    props.fetchOrganization(payload);
   }
 
   function fetchMoreHealthCare(name) {
     const payload = {
-      "f-id_organization_category": 1,
+      "f-id_organization_type": 4,
       "f-show_on_web": 1,
       pagging: 1,
-      page: Number(props.dataHealthCare.page) + 1,
+      page: Number(props.dataOrganization.page) + 1,
     };
     if (keyword !== "") {
       payload["f-name"] = name;
     }
-    props.fetchHealthCare(payload);
+    props.fetchOrganization(payload);
   }
 
   function handleChange(event) {
@@ -57,7 +57,7 @@ const HealthCare = (props) => {
 
   return (
     <div>
-      <Header title="Kesehatan" back />
+      <Header title="Pemerintahan" back />
       <Hero url={url} alt="Qiwii" />
       <div className="container">
         <div className="my-3 card-item shadow-sm p-2">
@@ -76,17 +76,17 @@ const HealthCare = (props) => {
           </div>
         </div>
         <InfiniteScroll
-          dataLength={props.dataHealthCare.data.length ?? []}
+          dataLength={props.dataOrganization.data.length ?? []}
           next={fetchMoreHealthCare}
           hasMore={
-            Number(props.dataHealthCare.page) < props.dataHealthCare.total
+            Number(props.dataOrganization.page) < props.dataOrganization.total
               ? true
               : false
           }
           loader={<h4>Loading...</h4>}
         >
-          {props.dataHealthCare.data &&
-            props.dataHealthCare.data.map((item, index) => (
+          {props.dataOrganization.data &&
+            props.dataOrganization.data.map((item, index) => (
               <ItemMerchant
                 key={index}
                 data={item}
@@ -100,20 +100,20 @@ const HealthCare = (props) => {
   );
 };
 
-HealthCare.defaultProps = {
-  fetchHealthCare: () => {},
+Government.defaultProps = {
+  fetchOrganization: () => {},
 };
 
-HealthCare.propTypes = {
-  fetchHealthCare: PropTypes.func,
+Government.propTypes = {
+  fetchOrganization: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
-  dataHealthCare: state.dataHealthCare,
+  dataOrganization: state.dataOrganization,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(ActionCreators, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HealthCare);
+export default connect(mapStateToProps, mapDispatchToProps)(Government);
