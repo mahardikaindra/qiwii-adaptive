@@ -35,7 +35,7 @@ const HealthCare = (props) => {
     if (keyword !== "") {
       payload["f-name"] = name;
     }
-    props.fetchHealthCare(payload);
+    props.fetchOrganizations(payload, "kesehatan");
   }
 
   function fetchMoreHealthCare(name) {
@@ -48,7 +48,7 @@ const HealthCare = (props) => {
     if (keyword !== "") {
       payload["f-name"] = name;
     }
-    props.fetchHealthCare(payload);
+    props.fetchOrganizations(payload, "kesehatan");
   }
 
   function handleChange(event) {

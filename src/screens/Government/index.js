@@ -35,10 +35,10 @@ const Government = (props) => {
     if (keyword !== "") {
       payload["f-name"] = name;
     }
-    props.fetchOrganization(payload);
+    props.fetchOrganizations(payload, "pemerintahan");
   }
 
-  function fetchMoreHealthCare(name) {
+  function fetchMoreOrganization(name) {
     const payload = {
       "f-id_organization_type": 4,
       "f-show_on_web": 1,
@@ -48,7 +48,7 @@ const Government = (props) => {
     if (keyword !== "") {
       payload["f-name"] = name;
     }
-    props.fetchOrganization(payload);
+    props.fetchOrganizations(payload, "pemerintahan");
   }
 
   function handleChange(event) {
@@ -77,7 +77,7 @@ const Government = (props) => {
         </div>
         <InfiniteScroll
           dataLength={props.dataOrganization.data.length ?? []}
-          next={fetchMoreHealthCare}
+          next={fetchMoreOrganization}
           hasMore={
             Number(props.dataOrganization.page) < props.dataOrganization.total
               ? true
@@ -91,7 +91,7 @@ const Government = (props) => {
                 key={index}
                 data={item}
                 index={index}
-                category="kesehatan"
+                category="pemerintahan"
               />
             ))}
         </InfiniteScroll>

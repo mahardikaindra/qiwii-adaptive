@@ -13,28 +13,6 @@ const setDataMoreHealthCare = (data) => ({
   payload: data,
 });
 
-export function fetchHealthCare(payload) {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      Qiwii.get(ORGANIZATION + qs.stringify(payload))
-        .then((response) => {
-          if (response.status === 200) {
-            if (Number(response.data.current_page) === 1) {
-              dispatch(setDataHealthCare(response.data));
-              resolve(response.data);
-            } else {
-              dispatch(setDataMoreHealthCare(response.data));
-              resolve(response.data);
-            }
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-}
-
 const setDataOrganization = (data) => ({
   type: types.SET_DATA_ORGANIZATION,
   payload: data,
@@ -44,28 +22,6 @@ const setDataMoreOrganization = (data) => ({
   type: types.SET_DATA_MORE_ORGANIZATION,
   payload: data,
 });
-
-export function fetchOrganization(payload) {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      Qiwii.get(ORGANIZATION + qs.stringify(payload))
-        .then((response) => {
-          if (response.status === 200) {
-            if (Number(response.data.current_page) === 1) {
-              dispatch(setDataOrganization(response.data));
-              resolve(response.data);
-            } else {
-              dispatch(setDataMoreOrganization(response.data));
-              resolve(response.data);
-            }
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-}
 
 const setDataFinance = (data) => ({
   type: types.SET_DATA_FINANCE,
@@ -77,41 +33,59 @@ const setDataMoreFinance = (data) => ({
   payload: data,
 });
 
-export function fetchFinance(payload) {
+const setDataSalon = (data) => ({
+  type: types.SET_DATA_SALON,
+  payload: data,
+});
+
+const setDataMoreSalon = (data) => ({
+  type: types.SET_DATA_MORE_SALON,
+  payload: data,
+});
+
+export function fetchOrganizations(payload, organization) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
       Qiwii.get(ORGANIZATION + qs.stringify(payload))
         .then((response) => {
           if (response.status === 200) {
             if (Number(response.data.current_page) === 1) {
-              dispatch(setDataFinance(response.data));
+              switch (organization) {
+                case "kesehatan":
+                  dispatch(setDataHealthCare(response.data));
+                  break;
+                case "pemerintahan":
+                  dispatch(setDataOrganization(response.data));
+                  break;
+                case "keuangan":
+                  dispatch(setDataFinance(response.data));
+                  break;
+                case "salon":
+                  dispatch(setDataSalon(response.data));
+                  break;
+                default:
+                  dispatch(setDataHealthCare(response.data));
+              }
               resolve(response.data);
             } else {
-              dispatch(setDataMoreFinance(response.data));
+              switch (organization) {
+                case "kesehatan":
+                  dispatch(setDataMoreHealthCare(response.data));
+                  break;
+                case "pemerintahan":
+                  dispatch(setDataMoreOrganization(response.data));
+                  break;
+                case "keuangan":
+                  dispatch(setDataMoreFinance(response.data));
+                  break;
+                case "salon":
+                  dispatch(setDataMoreSalon(response.data));
+                  break;
+                default:
+                  dispatch(setDataMoreHealthCare(response.data));
+              }
               resolve(response.data);
             }
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-}
-
-const setDataSalon = (data) => ({
-  type: types.SET_DATA_SALON,
-  payload: data,
-});
-
-export function fetchSalon(payload) {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      Qiwii.get(ORGANIZATION + qs.stringify(payload))
-        .then((response) => {
-          if (response.status === 200) {
-            dispatch(setDataSalon(response.data));
-            resolve(response.data);
           }
         })
         .catch((error) => {
