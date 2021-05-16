@@ -9,25 +9,25 @@ import "./styles.css";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const Government = (props) => {
+const Finance = (props) => {
   const [keyword, setKeyword] = useState("");
   const url = "https://app.qiwii.id/files/thumb/179d7a995690b4c/720/360/fit";
 
   useEffect(() => {
-    fetchOrganization();
+    fetchFinance();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (keyword.length >= 3) {
-      fetchOrganization(keyword);
+      fetchFinance(keyword);
     } else {
-      fetchOrganization("");
+      fetchFinance("");
     }
   }, [keyword]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  function fetchOrganization(name) {
+  function fetchFinance(name) {
     const payload = {
-      "f-id_organization_type": 4,
+      "f-id_organization_type": 17,
       "f-show_on_web": 1,
       pagging: 1,
       page: 1,
@@ -35,20 +35,20 @@ const Government = (props) => {
     if (keyword !== "") {
       payload["f-name"] = name;
     }
-    props.fetchOrganization(payload);
+    props.fetchFinance(payload);
   }
 
   function fetchMoreHealthCare(name) {
     const payload = {
-      "f-id_organization_type": 4,
+      "f-id_organization_type": 17,
       "f-show_on_web": 1,
       pagging: 1,
-      page: Number(props.dataOrganization.page) + 1,
+      page: Number(props.dataFinance.page) + 1,
     };
     if (keyword !== "") {
       payload["f-name"] = name;
     }
-    props.fetchOrganization(payload);
+    props.fetchFinance(payload);
   }
 
   function handleChange(event) {
@@ -57,14 +57,14 @@ const Government = (props) => {
 
   return (
     <div>
-      <Header title="Pemerintahan" back />
+      <Header title="Keuangan" back />
       <Hero url={url} alt="Qiwii" />
       <div className="container">
         <div className="my-3 card-item shadow-sm p-2">
           <div className="form-group m-2">
             <input
               value={keyword}
-              placeholder="Cari Nama Instansi"
+              placeholder="Cari Nama Bank"
               className="form-control"
               onChange={handleChange}
             />
@@ -76,17 +76,17 @@ const Government = (props) => {
           </div>
         </div>
         <InfiniteScroll
-          dataLength={props.dataOrganization.data.length ?? []}
+          dataLength={props.dataFinance.data.length ?? []}
           next={fetchMoreHealthCare}
           hasMore={
-            Number(props.dataOrganization.page) < props.dataOrganization.total
+            Number(props.dataFinance.page) < props.dataFinance.total
               ? true
               : false
           }
           loader={<h4>Loading...</h4>}
         >
-          {props.dataOrganization.data &&
-            props.dataOrganization.data.map((item, index) => (
+          {props.dataFinance.data &&
+            props.dataFinance.data.map((item, index) => (
               <ItemMerchant
                 key={index}
                 data={item}
@@ -100,20 +100,20 @@ const Government = (props) => {
   );
 };
 
-Government.defaultProps = {
-  fetchOrganization: () => {},
+Finance.defaultProps = {
+  fetchFinance: () => {},
 };
 
-Government.propTypes = {
-  fetchOrganization: PropTypes.func,
+Finance.propTypes = {
+  fetchFinance: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
-  dataOrganization: state.dataOrganization,
+  dataFinance: state.dataFinance,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(ActionCreators, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Government);
+export default connect(mapStateToProps, mapDispatchToProps)(Finance);

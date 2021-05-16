@@ -72,14 +72,24 @@ const setDataFinance = (data) => ({
   payload: data,
 });
 
+const setDataMoreFinance = (data) => ({
+  type: types.SET_DATA_MORE_FINANCE,
+  payload: data,
+});
+
 export function fetchFinance(payload) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
       Qiwii.get(ORGANIZATION + qs.stringify(payload))
         .then((response) => {
           if (response.status === 200) {
-            dispatch(setDataFinance(response.data));
-            resolve(response.data);
+            if (Number(response.data.current_page) === 1) {
+              dispatch(setDataFinance(response.data));
+              resolve(response.data);
+            } else {
+              dispatch(setDataMoreFinance(response.data));
+              resolve(response.data);
+            }
           }
         })
         .catch((error) => {
