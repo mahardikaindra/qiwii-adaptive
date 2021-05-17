@@ -83,6 +83,16 @@ const setDataMoreTempatWisata = (data) => ({
   payload: data,
 });
 
+const setDataMovies = (data) => ({
+  type: types.SET_DATA_MOVIES,
+  payload: data,
+});
+
+const setDataMoreMovies = (data) => ({
+  type: types.SET_DATA_MORE_MOVIES,
+  payload: data,
+});
+
 export function fetchOrganizations(payload, organization) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -115,6 +125,9 @@ export function fetchOrganizations(payload, organization) {
                 case "tempatwisata":
                   dispatch(setDataTempatWisata(response.data));
                   break;
+                case "bioskop":
+                  dispatch(setDataMovies(response.data));
+                  break;
                 default:
                   dispatch(setDataHealthCare(response.data));
               }
@@ -144,6 +157,9 @@ export function fetchOrganizations(payload, organization) {
                   break;
                 case "tempatwisata":
                   dispatch(setDataMoreTempatWisata(response.data));
+                  break;
+                case "bioskop":
+                  dispatch(setDataMoreMovies(response.data));
                   break;
                 default:
                   dispatch(setDataMoreHealthCare(response.data));
@@ -187,28 +203,6 @@ export function fetchEntertainment(payload) {
         .then((response) => {
           if (response.status === 200) {
             dispatch(setDataEntertainment(response.data));
-            resolve(response.data);
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-}
-
-const setDataMovies = (data) => ({
-  type: types.SET_DATA_MOVIES,
-  payload: data,
-});
-
-export function fetchMovies(payload) {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      Qiwii.get(ORGANIZATION + qs.stringify(payload))
-        .then((response) => {
-          if (response.status === 200) {
-            dispatch(setDataMovies(response.data));
             resolve(response.data);
           }
         })

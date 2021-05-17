@@ -144,6 +144,13 @@ export const dataMovies = createReducer(initialState, {
       total: action.payload.total_page,
     };
   },
+  [types.SET_DATA_MORE_MOVIES](state, action) {
+    return {
+      data: state.data.concat(action.payload.data),
+      page: action.payload.current_page,
+      total: action.payload.total_page,
+    };
+  },
 });
 
 export const dataEvents = createReducer(initialState, {
