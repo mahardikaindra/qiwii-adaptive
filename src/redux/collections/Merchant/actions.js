@@ -53,6 +53,16 @@ const setDataMoreServices = (data) => ({
   payload: data,
 });
 
+const setDataEvents = (data) => ({
+  type: types.SET_DATA_EVENTS,
+  payload: data,
+});
+
+const setDataMoreEvents = (data) => ({
+  type: types.SET_DATA_MORE_EVENTS,
+  payload: data,
+});
+
 export function fetchOrganizations(payload, organization) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -76,6 +86,9 @@ export function fetchOrganizations(payload, organization) {
                 case "services":
                   dispatch(setDataServices(response.data));
                   break;
+                case "events":
+                  dispatch(setDataEvents(response.data));
+                  break;
                 default:
                   dispatch(setDataHealthCare(response.data));
               }
@@ -96,6 +109,9 @@ export function fetchOrganizations(payload, organization) {
                   break;
                 case "services":
                   dispatch(setDataMoreServices(response.data));
+                  break;
+                case "events":
+                  dispatch(setDataMoreEvents(response.data));
                   break;
                 default:
                   dispatch(setDataMoreHealthCare(response.data));
@@ -192,11 +208,6 @@ export function fetchPhotos(payload) {
     });
   };
 }
-
-const setDataEvents = (data) => ({
-  type: types.SET_DATA_EVENTS,
-  payload: data,
-});
 
 export function fetchEvents(payload) {
   return (dispatch) => {

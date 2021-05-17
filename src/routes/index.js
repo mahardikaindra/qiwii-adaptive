@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "../screens/Home";
 import HealthCare from "../screens/HealthCare";
 import Entertainment from "../screens/Entertainment";
+import Events from "../screens/Event";
 import Government from "../screens/Government";
 import Finance from "../screens/Finance";
 import Salon from "../screens/Salon";
@@ -15,6 +16,7 @@ function Routes() {
       <Switch>
         <Route exact path={"/kesehatan"} component={HealthCare} />
         <Route path={"/entertainment"} component={Entertainment} />
+        <Route path={"/event"} component={Events} />
         <Route path={"/pemerintahan"} component={Government} />
         <Route path={"/keuangan"} component={Finance} />
         <Route path={"/kecantikan"} component={Salon} />
