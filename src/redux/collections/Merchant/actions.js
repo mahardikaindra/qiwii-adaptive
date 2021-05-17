@@ -73,6 +73,16 @@ const setDataMorePhotos = (data) => ({
   payload: data,
 });
 
+const setDataTempatWisata = (data) => ({
+  type: types.SET_DATA_TEMPAT_WISATA,
+  payload: data,
+});
+
+const setDataMoreTempatWisata = (data) => ({
+  type: types.SET_DATA_MORE_TEMPAT_WISATA,
+  payload: data,
+});
+
 export function fetchOrganizations(payload, organization) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -102,6 +112,9 @@ export function fetchOrganizations(payload, organization) {
                 case "photoStudio":
                   dispatch(setDataPhotos(response.data));
                   break;
+                case "tempatwisata":
+                  dispatch(setDataTempatWisata(response.data));
+                  break;
                 default:
                   dispatch(setDataHealthCare(response.data));
               }
@@ -128,6 +141,9 @@ export function fetchOrganizations(payload, organization) {
                   break;
                 case "photoStudio":
                   dispatch(setDataMorePhotos(response.data));
+                  break;
+                case "tempatwisata":
+                  dispatch(setDataMoreTempatWisata(response.data));
                   break;
                 default:
                   dispatch(setDataMoreHealthCare(response.data));

@@ -10,12 +10,14 @@ import Government from "../screens/Government";
 import Finance from "../screens/Finance";
 import Salon from "../screens/Salon";
 import Services from "../screens/Services";
+import TempatWisata from "../screens/TempatWisata";
 
 function Routes() {
   return (
     <Router>
       <Switch>
         <Route exact path={"/kesehatan"} component={HealthCare} />
+        <Route path={"/tempatwisata"} component={TempatWisata} />
         <Route path={"/entertainment"} component={Entertainment} />
         <Route path={"/photoStudio"} component={PhotoStudio} />
         <Route path={"/event"} component={Events} />

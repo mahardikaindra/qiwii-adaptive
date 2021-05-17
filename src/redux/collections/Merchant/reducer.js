@@ -75,6 +75,23 @@ export const dataSalon = createReducer(initialState, {
   },
 });
 
+export const dataTempatWisata = createReducer(initialState, {
+  [types.SET_DATA_TEMPAT_WISATA](state, action) {
+    return {
+      data: action.payload.data,
+      page: action.payload.current_page,
+      total: action.payload.total_page,
+    };
+  },
+  [types.SET_DATA_MORE_TEMPAT_WISATA](state, action) {
+    return {
+      data: state.data.concat(action.payload.data),
+      page: action.payload.current_page,
+      total: action.payload.total_page,
+    };
+  },
+});
+
 export const dataServices = createReducer(initialState, {
   [types.SET_DATA_SERVICES](state, action) {
     return {
