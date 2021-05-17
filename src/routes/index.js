@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "../screens/Home";
 import HealthCare from "../screens/HealthCare";
+import PhotoStudio from "../screens/PhotoStudio";
 import Entertainment from "../screens/Entertainment";
 import Events from "../screens/Event";
 import Government from "../screens/Government";
@@ -16,6 +17,7 @@ function Routes() {
       <Switch>
         <Route exact path={"/kesehatan"} component={HealthCare} />
         <Route path={"/entertainment"} component={Entertainment} />
+        <Route path={"/photoStudio"} component={PhotoStudio} />
         <Route path={"/event"} component={Events} />
         <Route path={"/pemerintahan"} component={Government} />
         <Route path={"/keuangan"} component={Finance} />

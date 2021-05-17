@@ -21,7 +21,7 @@ const Entertainment = (props) => {
 
   return (
     <div>
-      <Header />
+      <Header back title="Hiburan" />
       <Hero url={url} alt="Qiwii" />
       {/* Start Of Menu */}
       <div className="d-flex container col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 flex-wrap justify-content-center py-5">

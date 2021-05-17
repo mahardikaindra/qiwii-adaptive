@@ -83,6 +83,13 @@ export const dataServices = createReducer(initialState, {
       total: action.payload.total_page,
     };
   },
+  [types.SET_DATA_MORE_SERVICES](state, action) {
+    return {
+      data: state.data.concat(action.payload.data),
+      page: action.payload.current_page,
+      total: action.payload.total_page,
+    };
+  },
 });
 
 export const dataEntertainment = createReducer(initialState, {
@@ -99,6 +106,13 @@ export const dataPhotos = createReducer(initialState, {
   [types.SET_DATA_PHOTOS](state, action) {
     return {
       data: action.payload.data,
+      page: action.payload.current_page,
+      total: action.payload.total_page,
+    };
+  },
+  [types.SET_DATA_MORE_PHOTOS](state, action) {
+    return {
+      data: state.data.concat(action.payload.data),
       page: action.payload.current_page,
       total: action.payload.total_page,
     };

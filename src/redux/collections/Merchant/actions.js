@@ -63,6 +63,16 @@ const setDataMoreEvents = (data) => ({
   payload: data,
 });
 
+const setDataPhotos = (data) => ({
+  type: types.SET_DATA_PHOTOS,
+  payload: data,
+});
+
+const setDataMorePhotos = (data) => ({
+  type: types.SET_DATA_MORE_PHOTOS,
+  payload: data,
+});
+
 export function fetchOrganizations(payload, organization) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -89,6 +99,9 @@ export function fetchOrganizations(payload, organization) {
                 case "events":
                   dispatch(setDataEvents(response.data));
                   break;
+                case "photoStudio":
+                  dispatch(setDataPhotos(response.data));
+                  break;
                 default:
                   dispatch(setDataHealthCare(response.data));
               }
@@ -112,6 +125,9 @@ export function fetchOrganizations(payload, organization) {
                   break;
                 case "events":
                   dispatch(setDataMoreEvents(response.data));
+                  break;
+                case "photoStudio":
+                  dispatch(setDataMorePhotos(response.data));
                   break;
                 default:
                   dispatch(setDataMoreHealthCare(response.data));
@@ -177,45 +193,6 @@ export function fetchMovies(payload) {
         .then((response) => {
           if (response.status === 200) {
             dispatch(setDataMovies(response.data));
-            resolve(response.data);
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-}
-
-const setDataPhotos = (data) => ({
-  type: types.SET_DATA_PHOTOS,
-  payload: data,
-});
-
-export function fetchPhotos(payload) {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      Qiwii.get(ORGANIZATION + qs.stringify(payload))
-        .then((response) => {
-          if (response.status === 200) {
-            dispatch(setDataPhotos(response.data));
-            resolve(response.data);
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-}
-
-export function fetchEvents(payload) {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      Qiwii.get(ORGANIZATION + qs.stringify(payload))
-        .then((response) => {
-          if (response.status === 200) {
-            dispatch(setDataEvents(response.data));
             resolve(response.data);
           }
         })
