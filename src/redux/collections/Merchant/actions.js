@@ -93,6 +93,10 @@ const setDataMoreMovies = (data) => ({
   payload: data,
 });
 
+const setDataIsNull = () => ({
+  type: types.SET_DATA_IS_NULL,
+});
+
 export function fetchOrganizations(payload, organization) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -166,44 +170,9 @@ export function fetchOrganizations(payload, organization) {
               }
               resolve(response.data);
             }
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-}
-
-export function fetchServices(payload) {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      Qiwii.get(ORGANIZATION + qs.stringify(payload))
-        .then((response) => {
-          if (response.status === 200) {
-            resolve(response.data);
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-}
-
-const setDataEntertainment = (data) => ({
-  type: types.SET_DATA_ENTERTAINMENT,
-  payload: data,
-});
-
-export function fetchEntertainment(payload) {
-  return (dispatch) => {
-    return new Promise((resolve, reject) => {
-      Qiwii.get(ORGANIZATION + qs.stringify(payload))
-        .then((response) => {
-          if (response.status === 200) {
-            dispatch(setDataEntertainment(response.data));
-            resolve(response.data);
+          } else {
+            dispatch(setDataIsNull());
+            resolve([]);
           }
         })
         .catch((error) => {

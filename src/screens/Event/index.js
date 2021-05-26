@@ -57,14 +57,14 @@ const Event = (props) => {
 
   return (
     <div>
-      <Header title="Keuangan" back />
+      <Header title="Events" back />
       <Hero url={url} alt="Qiwii" />
       <div className="container">
         <div className="my-3 card-item shadow-sm p-2">
           <div className="form-group m-2">
             <input
               value={keyword}
-              placeholder="Cari Nama Bank"
+              placeholder="Cari Nama Event"
               className="form-control"
               onChange={handleChange}
             />

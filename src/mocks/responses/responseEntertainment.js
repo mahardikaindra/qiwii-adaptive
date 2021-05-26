@@ -8,7 +8,7 @@ const responseMenus = {
     {
       id: 1,
       title: "Event",
-      navigate: "event",
+      navigate: "events",
       icon: Event,
     },
     {

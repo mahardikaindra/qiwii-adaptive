@@ -22,6 +22,13 @@ export const dataHealthCare = createReducer(initialState, {
       total: action.payload.total_page,
     };
   },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
+    };
+  },
 });
 
 export const dataOrganization = createReducer(initialState, {
@@ -37,6 +44,13 @@ export const dataOrganization = createReducer(initialState, {
       data: state.data.concat(action.payload.data),
       page: action.payload.current_page,
       total: action.payload.total_page,
+    };
+  },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
     };
   },
 });
@@ -56,6 +70,13 @@ export const dataFinance = createReducer(initialState, {
       total: action.payload.total_page,
     };
   },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
+    };
+  },
 });
 
 export const dataSalon = createReducer(initialState, {
@@ -71,6 +92,13 @@ export const dataSalon = createReducer(initialState, {
       data: state.data.concat(action.payload.data),
       page: action.payload.current_page,
       total: action.payload.total_page,
+    };
+  },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
     };
   },
 });
@@ -90,6 +118,13 @@ export const dataTempatWisata = createReducer(initialState, {
       total: action.payload.total_page,
     };
   },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
+    };
+  },
 });
 
 export const dataServices = createReducer(initialState, {
@@ -105,6 +140,13 @@ export const dataServices = createReducer(initialState, {
       data: state.data.concat(action.payload.data),
       page: action.payload.current_page,
       total: action.payload.total_page,
+    };
+  },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
     };
   },
 });
@@ -134,6 +176,13 @@ export const dataPhotos = createReducer(initialState, {
       total: action.payload.total_page,
     };
   },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
+    };
+  },
 });
 
 export const dataMovies = createReducer(initialState, {
@@ -151,6 +200,13 @@ export const dataMovies = createReducer(initialState, {
       total: action.payload.total_page,
     };
   },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
+    };
+  },
 });
 
 export const dataEvents = createReducer(initialState, {
@@ -166,6 +222,13 @@ export const dataEvents = createReducer(initialState, {
       data: state.data.concat(action.payload.data),
       page: action.payload.current_page,
       total: action.payload.total_page,
+    };
+  },
+  [types.SET_DATA_IS_NULL](state, action) {
+    return {
+      data: [],
+      page: 0,
+      total: 0,
     };
   },
 });
