@@ -6,6 +6,8 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 
+import Login from "../screens/Login";
+import Register from "../screens/Register";
 import Home from "../screens/Home";
 import HealthCare from "../screens/HealthCare";
 import PhotoStudio from "../screens/PhotoStudio";
@@ -142,6 +144,8 @@ function Routes() {
         <Route path={"/kecantikan"} component={RouteSalon} />
         <Route path={"/services"} component={RouteBengkel} />
         <Route path={"/adaptive"} component={Home} />
+        <Route path={"/login"} component={Login} />
+        <Route path={"/register"} component={Register} />
         <Route path={"/"} component={Home} />
       </Switch>
     </Router>
