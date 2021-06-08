@@ -27,6 +27,13 @@ test("renders App", () => {
   render();
 });
 
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useParams: () => ({
+    id: 423,
+  }),
+}));
+
 // re-export everything
 export * from "@testing-library/react";
 // override render method

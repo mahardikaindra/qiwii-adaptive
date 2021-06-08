@@ -2,7 +2,7 @@
  * ItemService Component
  */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
@@ -16,8 +16,17 @@ function ItemService({ data, index, category }) {
       : data.id_icon
   );
 
+  const [setting, setSetting] = useState({});
+
+  useEffect(() => {
+    if (data) {
+      handleJson(data);
+    }
+  }, [data]);
+
+  const handleJson = (data) => setSetting(JSON.parse(data.setting));
+
   let history = useHistory();
-  const setting = JSON.parse(data.setting);
   return (
     <div key={index} className="flex-row mx-1 d-flex my-3 card-item shadow-sm">
       <div className="col-sm-auto card-icon bg-secondary d-flex justify-content-center align-content-center p-2">
